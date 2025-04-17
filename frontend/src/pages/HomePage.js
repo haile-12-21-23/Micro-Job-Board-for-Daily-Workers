@@ -6,7 +6,6 @@ const HomePage=()=>{
 <div>
     <h1>Micro Job Boarding</h1>
     <JobForm />
-    {/* <JobList /> */}
 </div>
     );
 };

@@ -1,11 +1,18 @@
-import { useEffect, useState } from 'react';
+import { use, useEffect, useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const JobList = () => {
   const [jobs, setJobs] = useState([]);
   const [loading, setLoading] = useState(true);
+const navigate=useNavigate();
 
   useEffect(() => {
+    const token=localStorage.getItem('token');
+    if(!token){
+      navigate('/login')
+    }
+    else{
     const fetchJobs = async () => {
       try {
         const res = await axios.get('http://localhost:5000/api/getJobs');
@@ -18,7 +25,8 @@ const JobList = () => {
       }
     };
     fetchJobs();
-  }, []); // only once on mount
+  }
+  }, [navigate]); // only once on mount
 
   if (loading) return <p>Loading jobs...</p>;
 
