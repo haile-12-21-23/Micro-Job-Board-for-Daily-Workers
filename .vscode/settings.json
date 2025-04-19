@@ -1,5 +1,8 @@
 {
     "cSpell.words": [
         "hailemariamaddisu"
+    ],
+    "emmet.extensionsPath": [
+        "javascriptreact "
     ]
 }

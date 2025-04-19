@@ -1,6 +1,8 @@
 import { use, useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import Navbar from './Navbar';
+
 
 const JobList = () => {
   const [jobs, setJobs] = useState([]);
@@ -29,9 +31,22 @@ const navigate=useNavigate();
   }, [navigate]); // only once on mount
 
   if (loading) return <p>Loading jobs...</p>;
-
+const logout=async()=>{
+const response=await axios.post('http://localhost:5000/api/auth/logout');
+if (response.status===200) {
+  alert('User logout successfully!');
+  navigate('/login');
+}
+else{
+  alert('Something went wrong.')
+}
+}
   return (
     <div>
+      <Navbar />
+      <header>
+        <button  onClick={logout} className="bg-red-400 hover:bg-red-300 text-white font-semibold py-2 px-4 rounded-md shadow-md transition duration-200">Logout </button>
+      </header>
       <h2>Available Jobs</h2>
       {jobs.length === 0 ? (
         <p>No jobs posted yet.</p>

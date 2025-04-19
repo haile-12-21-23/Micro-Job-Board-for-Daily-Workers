@@ -1,5 +1,5 @@
 import User from '../models/user.js';
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 
 export const signupUser=async (req, res)=>{
@@ -41,4 +41,13 @@ export const loginUser=async (req,res)=>{
     } catch (error) {
 res.status(201).json({error:error.toString()});
     }
+
 }
+export const logoutUser=(req, res)=>{
+    res.clearCookie('token',{
+        httpOnly:true,
+        secure:process.env.MODE_ENV==="development",
+        sameSite:'Strict'
+    });
+res.status(200).json({message:'Logged out successfully!'})
+};
