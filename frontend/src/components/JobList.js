@@ -29,9 +29,21 @@ const navigate=useNavigate();
   }, [navigate]); // only once on mount
 
   if (loading) return <p>Loading jobs...</p>;
-
+const logout=async()=>{
+const response=await axios.post('http://localhost:5000/api/auth/logout');
+if (response.status===200) {
+  alert('User logout successfully!');
+  navigate('/login');
+}
+else{
+  alert('Something went wrong.')
+}
+}
   return (
     <div>
+      <header>
+        <button  onClick={logout}>Logout </button>
+      </header>
       <h2>Available Jobs</h2>
       {jobs.length === 0 ? (
         <p>No jobs posted yet.</p>
