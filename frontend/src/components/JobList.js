@@ -1,6 +1,8 @@
 import { use, useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
+import Navbar from './Navbar';
+
 
 const JobList = () => {
   const [jobs, setJobs] = useState([]);
@@ -41,6 +43,7 @@ else{
 }
   return (
     <div>
+      <Navbar />
       <header>
         <button  onClick={logout} className="bg-red-400 hover:bg-red-300 text-white font-semibold py-2 px-4 rounded-md shadow-md transition duration-200">Logout </button>
       </header>
