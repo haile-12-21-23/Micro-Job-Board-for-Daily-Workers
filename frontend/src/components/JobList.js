@@ -42,7 +42,7 @@ else{
   return (
     <div>
       <header>
-        <button  onClick={logout}>Logout </button>
+        <button  onClick={logout} className="bg-red-400 hover:bg-red-300 text-white font-semibold py-2 px-4 rounded-md shadow-md transition duration-200">Logout </button>
       </header>
       <h2>Available Jobs</h2>
       {jobs.length === 0 ? (
